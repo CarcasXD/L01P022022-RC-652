@@ -1,7 +1,13 @@
+using L01P022022_RC_652.Models;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<facultadContext>(opt =>
+                opt.UseSqlServer(
+                    builder.Configuration.GetConnectionString("facultadDbConnection")));
 
 var app = builder.Build();
 
